@@ -1,3 +1,18 @@
+## Cloud Services Engineer DBOps Project
+Проект предназначен для демонстранции работы автоматизации операций с базами данных
+
+## Требования
+* Docker 20.10+
+* Docker Compose 2.20+
+* 1 ГБ свободного места
+
+## Установка и настройка
+Чтобы воспользоваться проектом выполните следующее:
+```bash
+git clone https://github.com/ClarkeFeed/cloud-services-engineer-dbops-project.git
+cd cloud-services-engineer-dbops-project
+```
+
 ## Создание пользователя в postgresql
 Создайте нового пользователя PostgreSQL. Под этим пользователем будут выполняться автотесты и миграции.
 ```sql
@@ -15,6 +30,16 @@ CREATE DATABASE store;
 ALTER DATABASE store OWNER TO store_user;
 GRANT ALL PRIVILEGES ON DATABASE store TO store_user;
 ```
+
+## Тестовые данные
+В проекте предоставлен файлы `insert-data.sh` и `docker-compose.yml`, с помощью которых можно создать тестовую БД, не запуская GitHub Actions. Для этого необходимо запустить docker-compose, сделать файл `insert-data.sh` исполняемым и запустить его.
+```bash
+#будучи в папке проекта
+docker-compose up -d
+chmod +x insert-data.sh
+./insert-data.sh
+```
+Не забудь предварительно поменять данные на удобные вам в обоих файлах.
 
 ## Подключение к БД
 Используйте psql:
